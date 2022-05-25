@@ -6,6 +6,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import os
 from datetime import timedelta
 from pathlib import Path
 
@@ -17,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4i!vlkdjyeq-ve@tw(-3fpyd_6uckpvo%$o8zcr^9_fh4p!0ba'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -165,6 +166,6 @@ DJOSER = {
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'skips94@gmail.com'
-EMAIL_HOST_PASSWORD = 'zcsruhmzqhwacwgm'
+EMAIL_HOST_PASSWORD = os.environ.get('APP_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
